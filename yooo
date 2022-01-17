@@ -1,0 +1,27 @@
+local content = syn.request(
+    {
+        Url = "https://cdn.discordapp.com/attachments/516450463382765589/920838221276020796/FGp0KUeVEAAV_FV.png",
+        Method = "GET",
+        Headers = {
+            ["Content-Type"] = "text"
+        },
+    }
+)
+
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local sound = Instance.new("Sound")
+sound.Looped = true
+sound.Parent = player.PlayerGui
+sound.SoundId = "rbxassetid://2069700029"
+sound.Volume = 10
+sound:Play()
+
+content = content.Body
+
+local img = Drawing.new("Image")
+img.Data = content
+img.Size = Vector2.new(720/713 * mouse.ViewSizeY, mouse.ViewSizeY)
+img.Position = Vector2.new((mouse.ViewSizeX - 720/713 * mouse.ViewSizeY)/2,0)
+img.Visible = true
